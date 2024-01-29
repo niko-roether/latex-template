@@ -1,4 +1,4 @@
-\documentclass{fancy_article}
+\documentclass[de]{fancy_article}
 
 \title{Test}
 \author{Nicholas Roether}
@@ -6,9 +6,9 @@
 
 \begin{document}
 
+\begin{titlepage}
 \maketitle
-
-\newpage
+\end{titlepage}
 
 \tableofcontents
 
@@ -16,10 +16,17 @@
 
 Wenn ich Text schreibe, sieht das so aus. Ich find' das ganz gut.
 
+Hier ist ein Verweis: \ref{th:pythagoras}
+
 \begin{codefile}{rust}{test.rs}
 fn main() {
 	println!("This is source code!");
 }
 \end{codefile}
+
+\begin{theorem}{Satz des Pythagoras}{pythagoras}
+	a^2 + b^2 = c^2
+\end{theorem}
+
 
 \end{document}

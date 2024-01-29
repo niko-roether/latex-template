@@ -8,6 +8,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{graphicx}
 \RequirePackage{xcolor}
+\RequirePackage{tikz}
 \RequirePackage[outputdir=out]{minted}
 \RequirePackage[listings]{tcolorbox}
 \RequirePackage[backend=biber, style=ieee, hyperref=true]{biblatex}
@@ -15,14 +16,6 @@
 \RequirePackage{fontspec}
 \RequirePackage[autostyle]{csquotes}
 \RequirePackage{geometry}
-%\RequirePackage[
-%	left=2cm,
-%	right=2cm,
-%	top=2cm,
-%	bottom=2cm,
-%	headheight=1m,
-%	headsep=0.5cm
-%]{geometry}
 
 % Parameters
 \newbool{lang_german}
@@ -36,6 +29,10 @@
 	\RequirePackage[ngerman=ngerman-x-latest]{hyphsubst}
 }
 
+% Colors
+\definecolor{BoxCode}{HTML}{183a37}
+\definecolor{BoxMath}{HTML}{432534}
+\definecolor{BoxBackground}{HTML}{f4f7f5}
 
 % Setup
 \geometry{
@@ -43,27 +40,40 @@
 	margin=2cm
 }
 
-\hypersetup{
-	colorlinks=true,
-	linkcolor=black,
-	filecolor=blue,
-	urlcolor=blue
-}
+\hypersetup{hidelinks}
 
 \setmainfont{Merriweather}
 \setsansfont{Merriweather Sans}
 \setmonofont{Fira Code}
 
-\tcbuselibrary{minted}
+\tcbuselibrary{minted, theorems}
+
+% Definitions
 \newtcblisting{code}[1]{
 	listing only,
+	colback=BoxBackground,
+	colframe=BoxCode,
 	minted language={#1},
-	minted style=tango
+	minted style=tango,
+	minted options={breaklines,linenos,numbersep=3mm},
+	left=6mm
 }
 \newtcblisting{codefile}[2]{
 	listing only,
+	colback=BoxBackground,
+	colframe=BoxCode,
 	minted language={#1},
 	minted style=tango,
+	minted options={breaklines,linenos,numbersep=3mm},
+	left=6mm,
 	fonttitle=\sffamily,
 	title={#2}
 }
+
+\newtcbtheorem[number within=section]{theorem}%
+{\ifbool{lang_german}{Satz}{Theorem}}%
+{
+	ams equation*,
+	colback=BoxBackground,
+	colframe=BoxMath
+}{th}
