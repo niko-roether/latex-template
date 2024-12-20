@@ -16,6 +16,7 @@
 \RequirePackage{fontspec}
 \RequirePackage[autostyle]{csquotes}
 \RequirePackage{geometry}
+\RequirePackage[printonlyused, withpage, smaller]{acronym}
 
 % Parameters
 \newbool{lang_german}
